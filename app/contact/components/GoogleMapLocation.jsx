@@ -8,7 +8,6 @@ const GoogleMapLocation = () => {
 
   // Coordinates for the hospital's location (example coordinates)
   const hospitalLocation = {
-    // 13.506120412243513, 39.451352279065425
     lat: 13.506120412243513, // Latitude of the hospital
     lng: 39.451352279065425, // Longitude of the hospital
   };
@@ -34,16 +33,19 @@ const GoogleMapLocation = () => {
   // Map container style
   const containerStyle = {
     width: "100%",
-    height: "600px", // Increased from 400px to 600px
+    height: "600px", // Increased from 400px to 600px for better visibility
   };
 
   return (
     <div className="my-10 p-10">
-      <LoadScript googleMapsApiKey="AIzaSyAKWQbAnmCya9CjretierRF01uhFMNMFFg">
+      <LoadScript
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+      >
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={hospitalLocation}
           zoom={15}
+          onError={() => alert("There was an error loading the map.")}
         >
           {/* Marker for the hospital location */}
           <Marker position={hospitalLocation} />

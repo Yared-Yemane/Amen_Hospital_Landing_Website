@@ -10,15 +10,16 @@ import socialLinksFa from "../data/socialLinksFa";
 import { Lora } from "next/font/google";
 
 const lora = Lora({
-  subsets: ["latin"], // Optional: Specify subsets like 'latin', 'cyrillic'
-  weight: ["400", "500", "700"], // Optional: Choose font weights
-  display: "swap", // Optional: Prevents FOIT (Flash of Invisible Text)
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isFirstSectionVisible, setIsFirstSectionVisible] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for the hamburger menu
   const firstSectionRef = useRef(null);
 
   useEffect(() => {
@@ -35,6 +36,12 @@ const Navbar = () => {
       }
     };
 
+    const darkMode = localStorage.getItem("darkMode") === "true";
+    setIsDarkMode(darkMode);
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    }
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -43,8 +50,18 @@ const Navbar = () => {
   }, []);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark", !isDarkMode);
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    if (newDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("darkMode", newDarkMode.toString());
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -52,14 +69,14 @@ const Navbar = () => {
       {/* First Section */}
       <div
         ref={firstSectionRef}
-        className={`flex justify-between w-full px-20 p-2 border-b 
-    bg-white dark:bg-gray-900
-    text-gray-800 dark:text-gray-300
-    dark:border-gray-700 transform transition-transform duration-500 ease-in-out ${
-      isFirstSectionVisible
-        ? "translate-y-0 opacity-100"
-        : "-translate-y-full opacity-0"
-    }`}
+        className={`flex justify-between w-full px-6 sm:px-14 p-2 border-b 
+          bg-white dark:bg-gray-900
+          text-gray-800 dark:text-gray-300
+          dark:border-gray-700 transform transition-transform duration-500 ease-in-out ${
+            isFirstSectionVisible
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-full opacity-0"
+          }`}
       >
         {/* Left Side - Contact Info */}
         <div className="flex justify-between gap-3 font-thin z-10">
@@ -69,7 +86,7 @@ const Navbar = () => {
               color={isDarkMode ? "#d1d5db" : "#9e95c2"}
               className="mt-1"
             />
-            <span className="text-[#9e95c2] dark:text-gray-300">
+            <span className="text-[#9e95c2] dark:text-gray-300 z-10">
               +251 234 4567
             </span>
           </div>
@@ -87,7 +104,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Side - Social Links */}
-        <div className="flex items-center gap-4">
+        <div className="hidden sm:flex items-center gap-4">
           {socialLinksFa.map((socialLink, index) => (
             <div
               key={index}
@@ -103,34 +120,115 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Second Section */}
+      {/* Second Section (Navbar) */}
       <div
-        className={`flex justify-around gap-80 items-center px-20 fixed left-0 right-0 z-20 bg-white dark:bg-gray-800 shadow-md transform transition-transform duration-500 ease-in-out ${
-          isSticky ? "-translate-y-11" : "translate-y-0"
+        className={`flex justify-between items-center px-6 sm:px-20 h-16 transition-all duration-500 scroll-smooth ${
+          isSticky
+            ? "fixed left-0 right-0 top-0 z-20 bg-white dark:text-white dark:bg-gray-800 shadow-md"
+            : "relative"
         }`}
       >
-        <Link href="/" className="-mt-20 -mb-16 -ml-12">
+        {/* Logo Section */}
+        <Link href="/">
           <Image
             src="/images/logo.png"
-            width={300}
-            height={100}
+            width={150} // Updated size
+            height={150} // Updated size
             alt="Company Logo"
+            className="h-full w-full sm:-ml-5 mb-4" // Ensures proper scaling
           />
         </Link>
 
-        <div className="flex justify-center gap-10">
-          <div className="flex gap-5 font-bold text-lg mt-6 text-[#333] dark:text-white">
-            {navLinks.map((navLink, index) => (
-              <Dropdown key={index} menu={navLink} />
-            ))}
-          </div>
-
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-8 items-center mb-4 ">
+          {navLinks.map((navLink, index) => (
+            <Dropdown key={index} menu={navLink} />
+          ))}
           <button
             onClick={toggleDarkMode}
-            className="text-[#9e95c2] dark:text-[#f9f9f9] hover:bg-[#e2e2e2] dark:hover:bg-[#444] ml-3 p-3 rounded-full"
+            className="text-[#9e95c2] dark:text-[#f9f9f9] hover:bg-[#e2e2e2] dark:hover:bg-[#444] p-2 rounded-full"
           >
             {isDarkMode ? "🌞" : "🌙"}
           </button>
+        </div>
+
+        {/* Hamburger Menu */}
+        <div className="md:hidden flex -mr-5 items-center relative">
+          <button
+            onClick={toggleMenu}
+            className={`text-gray-800 dark:text-gray-300 focus:outline-none ${
+              isMenuOpen && "opacity-0"
+            }`}
+          >
+            <svg
+              className="h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={
+                  isMenuOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
+                }
+              />
+            </svg>
+          </button>
+
+          {/* Mobile Menu */}
+          <div
+            className={`fixed inset-0 bg-black bg-opacity-50 z-40 ${
+              isMenuOpen ? "block" : "hidden"
+            }`}
+            onClick={toggleMenu}
+          ></div>
+
+          <div
+            className={`fixed right-0 top-0 h-screen w-64 bg-white dark:bg-gray-800 shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+              isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            {/* Close Button Inside Dropdown */}
+            <div className="flex justify-end p-4">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-800 dark:text-gray-300 focus:outline-none"
+              >
+                <svg
+                  className="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Menu Links */}
+            <div className="flex flex-col space-y-3 p-4">
+              {navLinks.map((navLink, index) => (
+                <Dropdown key={index} menu={navLink} />
+              ))}
+              <button
+                onClick={toggleDarkMode}
+                className="text-[#9e95c2] dark:text-[#f9f9f9] hover:bg-[#e2e2e2] dark:hover:bg-[#444] p-3 rounded-md"
+              >
+                {isDarkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

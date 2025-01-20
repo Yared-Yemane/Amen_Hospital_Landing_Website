@@ -12,21 +12,24 @@ const AppointmentHero = () => {
   const [dateValue, setDateValue] = useState(new Date());
 
   return (
-    <div className=" bg-[#269dff] py-16 px-14 grid grid-cols-1 md:grid-cols-2 gap-10 dark:bg-[#2d3748]">
-      <div>
+    <div className="bg-[#269dff] py-16 px-6 sm:px-14 grid grid-cols-1 md:grid-cols-2 gap-10 dark:bg-[#2d3748]">
+      {/* Left Side Content */}
+      <div className="flex flex-col justify-center">
         <h1 className="relative font-bold text-lg text-[#ffffff] dark:text-white after:block after:w-[131px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4fd1c5]">
           APPOINTMENT
         </h1>
 
-        <h1 className="text-[46px] font-bold mt-4 leading-tight mb-6 text-white dark:text-white">
+        <h1 className="text-[32px] md:text-[46px] font-bold mt-4 leading-tight mb-6 text-white dark:text-white">
           Make An Appointment For Your Family
         </h1>
-        <p className="text-white dark:text-[#e2e8f0]">
+
+        <p className="text-white dark:text-[#e2e8f0] mb-6">
           Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd
           ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum
           sea invidunt voluptua.
         </p>
-        <div className="flex gap-6 mt-10">
+
+        <div className="flex flex-wrap gap-6 mt-10 justify-center md:justify-start">
           <button className="bg-black text-white rounded-full p-4 w-44 font-bold hover:shadow-md hover:shadow-black transition-all duration-300">
             Find Doctor
           </button>
@@ -36,12 +39,13 @@ const AppointmentHero = () => {
         </div>
       </div>
 
-      <div className="mx-auto bg-white dark:bg-[#2d3748] px-12 py-14 rounded-lg shadow-md">
+      {/* Form Section */}
+      <div className="mx-auto bg-white dark:bg-[#2d3748] px-8 sm:px-12 py-10 sm:py-14 rounded-lg shadow-md w-full">
         <form action="/">
           <h2 className="text-3xl font-bold text-center text-[#269dff] dark:text-[#4fd1c5] mb-6">
             Book an Appointment
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-[#9f9f9f] dark:text-[#e2e8f0]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-5 text-[#9f9f9f] dark:text-[#e2e8f0]">
             <div>
               <div className="mb-4">
                 <select
@@ -49,7 +53,7 @@ const AppointmentHero = () => {
                   id="service"
                   name="service"
                   defaultValue=""
-                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white transition-all duration-200 w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent"
+                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent transition-all duration-200"
                 >
                   <option value="" disabled>
                     Choose Department
@@ -66,7 +70,7 @@ const AppointmentHero = () => {
                   id="fullname"
                   name="fullname"
                   placeholder="Enter your full name"
-                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white transition-all duration-200 w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent"
+                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
@@ -77,7 +81,7 @@ const AppointmentHero = () => {
                   onChange={(date) => setDateValue(date)}
                   placeholderText="Select Date"
                   dateFormat="MMMM d, yyyy"
-                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent"
+                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent transition-all duration-200"
                   popperPlacement="bottom"
                 />
               </div>
@@ -90,7 +94,7 @@ const AppointmentHero = () => {
                   name="doctor"
                   className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent transition-all duration-200"
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Select Doctor
                   </option>
                   <option value="general">General Consultation</option>
@@ -105,20 +109,20 @@ const AppointmentHero = () => {
                   id="email"
                   name="email"
                   placeholder="Enter your email"
-                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white transition-all duration-200 w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent"
+                  className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
               <div className="mb-6">
-                <TimePicker
-                  required
-                  onChange={setTimeValue}
-                  value={timeValue}
-                  clockIcon={null}
-                  clearIcon={null}
-                  disableClock={true}
-                  className="w-full p-4 border rounded-md focus:ring-2 focus:ring-[#269dff] border-transparent text-gray-700 dark:text-white"
-                />
+                <div className="time" id="time" data-target-input="nearest">
+                  <input
+                    type="time"
+                    className="bg-gray-100 dark:bg-[#4a5568] dark:text-white w-full p-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#269dff] focus:border-transparent transition-all duration-200"
+                    placeholder="Select Time"
+                    data-target="#time"
+                    data-toggle="datetimepicker"
+                  />
+                </div>
               </div>
             </div>
           </div>

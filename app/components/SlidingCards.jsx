@@ -24,7 +24,7 @@ const SlidingCards = () => {
 
   return (
     <div
-      className="relative w-full max-w-6xl mx-auto py-10 px-14 rounded-b-[20%] bg-[#269dff] dark:bg-[#2d3748]"
+      className="relative w-full max-w-7xl mx-auto py-10 px-5 sm:px-10 lg:px-14 rounded-b-[20%] bg-[#269dff] dark:bg-[#2d3748]"
       style={{
         background: "linear-gradient(to bottom, #0000 50%, #269dff 50%)",
       }}
@@ -32,7 +32,7 @@ const SlidingCards = () => {
       <Swiper
         ref={swiperRef}
         spaceBetween={20}
-        slidesPerView={3} // Show 3 slides per view
+        slidesPerView={3} // Show 3 slides per view by default
         navigation={{
           nextEl: ".next-btn",
           prevEl: ".prev-btn",
@@ -45,9 +45,8 @@ const SlidingCards = () => {
         loop // Enable loop
         speed={1000} // Set transition speed (in milliseconds)
         breakpoints={{
-          // Responsive breakpoints
           768: {
-            slidesPerView: 2, // Show 2 slides on tablets and below
+            slidesPerView: 3, // Show 2 slides on tablets and below
           },
           480: {
             slidesPerView: 1, // Show 1 slide on mobile
@@ -55,7 +54,7 @@ const SlidingCards = () => {
         }}
       >
         {packagesData.map((pkg) => (
-          <SwiperSlide key={pkg.id}>
+          <SwiperSlide key={pkg.id} style={{ width: "calc(33.33% - 20px)" }}>
             <div className="bg-white dark:bg-[#1a202c] rounded-lg shadow-lg overflow-hidden">
               {/* Upper Section */}
               <div
@@ -63,13 +62,15 @@ const SlidingCards = () => {
                 style={{ backgroundImage: `url(${pkg.image})` }}
               >
                 <div className="absolute inset-0 bg-[#063052] bg-opacity-60 flex flex-col justify-center items-center text-white p-4">
-                  <h3 className="text-xl font-bold">{pkg.name}</h3>
-                  <p className="text-lg font-semibold">Birr {pkg.price}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold">{pkg.name}</h3>
+                  <p className="text-lg sm:text-xl font-semibold">
+                    Birr {pkg.price}
+                  </p>
                 </div>
               </div>
               {/* Lower Section */}
-              <div className="p-10 text-center">
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-9">
+              <div className="p-5 sm:p-8 text-center">
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 leading-6 sm:leading-7">
                   {pkg.description}
                 </p>
                 <button className="bg-[#269dff] text-white rounded-full p-4 w-44 font-bold hover:shadow-md hover:shadow-black transition-all duration-300">
@@ -84,13 +85,13 @@ const SlidingCards = () => {
       {/* Navigation Buttons below the slider */}
       <div className="flex justify-center mt-4">
         <button
-          className="prev-btn bg-white text-[#269dff] dark:bg-[#4a5568] dark:text-white font-bold py-3 px-4 rounded-full shadow-md hover:text-gray-700 transition"
+          className="prev-btn bg-white text-[#269dff] dark:bg-[#4a5568] dark:text-white font-bold py-3 px-4 rounded-full shadow-md hover:text-gray-700 dark:hover:text-[#269dff] transition"
           onClick={() => swiperRef.current.swiper.slidePrev()} // Slide to the previous slide
         >
           &#8592;
         </button>
         <button
-          className="next-btn bg-white text-[#269dff] dark:bg-[#4a5568] dark:text-white font-bold py-3 px-4 rounded-full shadow-md hover:text-gray-700 transition ml-4"
+          className="next-btn bg-white text-[#269dff] dark:bg-[#4a5568] dark:text-white font-bold py-3 px-4 rounded-full shadow-md hover:text-gray-700 dark:hover:text-[#269dff] transition ml-4"
           onClick={() => swiperRef.current.swiper.slideNext()} // Slide to the next slide
         >
           &#8594;

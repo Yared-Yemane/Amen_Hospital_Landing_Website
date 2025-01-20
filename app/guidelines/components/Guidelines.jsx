@@ -17,15 +17,21 @@ const patientObligations = [
 
 const Guidelines = () => {
   return (
-    <div className=" px-16 sm:px-8 dark:bg-gray-900 dark:text-white py-5">
+    <div className="px-16 sm:px-8 dark:bg-gray-900 dark:text-white py-5">
       <h2 className="text-3xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-12">
         Patient Rights and <br /> Obligations
       </h2>
 
       <div className="flex flex-col sm:flex-row justify-between gap-8">
         {/* Rights Section */}
-        <div className="flex-1 bg-white shadow-lg rounded-lg p-8 transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:shadow-xl dark:hover:shadow-2xl dark:text-gray-300">
-          <h3 className="text-2xl font-semibold text-blue-600 mb-6 flex items-center space-x-2">
+        <div
+          className="flex-1 bg-white shadow-lg rounded-lg p-8 transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:shadow-xl dark:hover:shadow-2xl dark:text-gray-300"
+          aria-labelledby="rights-section"
+        >
+          <h3
+            id="rights-section"
+            className="text-2xl font-semibold text-blue-600 mb-6 flex items-center space-x-2"
+          >
             <FaHandHoldingHeart className="text-3xl" />
             <span>Patient Rights</span>
           </h3>
@@ -33,7 +39,7 @@ const Guidelines = () => {
             {patientRights.map((right, index) => (
               <li
                 key={index}
-                className="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:scale-105 transition-all duration-300"
+                className="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:scale-105 transition-all duration-300 focus:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 {right}
               </li>
@@ -42,8 +48,14 @@ const Guidelines = () => {
         </div>
 
         {/* Obligations Section */}
-        <div className="flex-1 bg-white shadow-lg rounded-lg p-8 transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:shadow-xl dark:hover:shadow-2xl dark:text-gray-300">
-          <h3 className="text-2xl font-semibold text-blue-600 mb-6 flex items-center space-x-2">
+        <div
+          className="flex-1 bg-white shadow-lg rounded-lg p-8 transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:shadow-xl dark:hover:shadow-2xl dark:text-gray-300"
+          aria-labelledby="obligations-section"
+        >
+          <h3
+            id="obligations-section"
+            className="text-2xl font-semibold text-blue-600 mb-6 flex items-center space-x-2"
+          >
             <FaHandshake className="text-3xl" />
             <span>Patient Obligations</span>
           </h3>
@@ -51,7 +63,7 @@ const Guidelines = () => {
             {patientObligations.map((obligation, index) => (
               <li
                 key={index}
-                className="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:scale-105 transition-all duration-300"
+                className="text-lg text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:scale-105 transition-all duration-300 focus:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 {obligation}
               </li>

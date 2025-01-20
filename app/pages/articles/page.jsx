@@ -11,7 +11,7 @@ const lora = Lora({
 
 export default function Home() {
   return (
-    <div className={`${lora.className} dark:bg-gray-800 mt-24`}>
+    <div className={`${lora.className} dark:bg-gray-800 pt-20`}>
       <ArticlesHero />
     </div>
   );

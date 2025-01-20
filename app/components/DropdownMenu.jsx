@@ -1,5 +1,3 @@
-// components/Dropdown.js
-
 import { useState, useRef, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa"; // For the arrow icons
 import Link from "next/link";
@@ -45,42 +43,35 @@ export default function Dropdown({ menu }) {
   }, []);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative mt-7 font-semibold" ref={dropdownRef}>
       {/* Button with Arrow Icon */}
+
       <button
         onClick={toggleDropdown}
-        className="flex gap-1 hover:border-b-[#269dff] hover:text-[#269dff] hover:border-b-4 transition-all pb-6"
+        className="flex items-center gap-2 hover:border-b-[#269dff] hover:text-[#269dff] hover:border-b-4 transition-all pb-6 text-sm sm:text-base"
       >
         {menu.url ? <Link href={menu.url}>{menu.name}</Link> : menu.name}
 
         {menu.subMenus &&
           (isOpen ? (
-            <FaChevronUp className=" mt-[4px] transition-all" size={16} /> // Show up arrow when the dropdown is open
+            <FaChevronUp className="-ml-1 transition-all" size={16} /> // Show up arrow when the dropdown is open
           ) : (
-            <FaChevronDown className=" mt-[6px] transition-all" size={16} /> // Show down arrow when the dropdown is closed
+            <FaChevronDown className=" -ml-1 transition-all" size={16} /> // Show down arrow when the dropdown is closed
           ))}
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && menu.subMenus && (
-        <div
-          //   ref={dropdownRef}
-          className=" z-50 absolute mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg font-medium text-gray-500 text-[17px]"
-        >
+        <div className="z-50 absolute mt-2 w-full sm:w-48 bg-white border border-gray-200 rounded-md shadow-lg font-medium text-gray-500 text-sm sm:text-[17px]">
           <ul className="py-2 w-full">
             {menu.subMenus.map((option, index) => (
-              <li key={index} className=" mb-1 w-full">
+              <li key={index} className="mb-1 w-full">
                 <Link
                   href={option.url}
-                  className="block px-4 py-2 hover:bg-gray-100 cursor-pointer w-full"
+                  className="block px-4 py-2 rounded-sm hover:bg-gray-100 cursor-pointer w-full focus:bg-[#269dff]"
                   onClick={() => handleLinkClick(option.name)} // Handle click
                 >
                   {option.name}
-                  {/* {
-                    if(option.name == "Search"){
-                     <SearchModal /> 
-                    }
-                  }                   */}
                 </Link>
                 {isSearchModalOpen && <SearchModal />}
               </li>

@@ -11,10 +11,6 @@ import {
   faShieldAlt,
   faWheelchair,
   faParking,
-  faHeart,
-  faStethoscope,
-  faLungs,
-  faNotesMedical,
 } from "@fortawesome/free-solid-svg-icons";
 import facilityImages from "../data/facilityImages";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -41,18 +37,18 @@ const PatientCareAndAmenities = () => {
   };
 
   return (
-    <div className="mb-5 bg-[#269dff] py-16 px-14 dark:bg-[#1a202c] dark:text-white">
+    <div className="mb-5 bg-[#269dff] py-16 px-4 sm:px-14 dark:bg-[#1a202c] dark:text-white">
       <div className="w-full">
         <div className="flex flex-col justify-center items-center">
-          <h1 className="relative font-bold text-lg text-[#ffffff] dark:text-[#e2e8f0] after:block after:w-[250px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4a5568]">
+          <h1 className="relative font-bold text-lg text-[#ffffff] dark:text-[#e2e8f0] after:block after:w-[254px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4a5568]">
             PATIENT CARE & AMENITIES
           </h1>
 
-          <h1 className="text-[46px] font-bold mt-4 leading-tight mb-6 text-center dark:text-[#edf2f7]">
+          <h1 className="text-[36px] sm:text-[46px] font-bold mt-4 leading-tight mb-6 text-center dark:text-[#edf2f7]">
             Comfort and Care for <br /> Every Patient
           </h1>
 
-          <div className="flex gap-8 w-full mt-8">
+          <div className="flex flex-col sm:flex-row gap-8 w-full mt-8">
             {/* Paragraph 1 */}
             <div className="flex-1 bg-white dark:bg-[#2d3748] p-6 rounded-lg shadow-lg h-full">
               <h3 className="text-2xl font-semibold mb-4 dark:text-[#edf2f7]">
@@ -91,7 +87,7 @@ const PatientCareAndAmenities = () => {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
           {/* Service Highlight Items */}
           {[
             {
@@ -135,27 +131,6 @@ const PatientCareAndAmenities = () => {
               title: "Parking Facilities",
               description: "Safe and spacious parking for your convenience.",
             },
-            // {
-            //   icon: faHeart,
-            //   title: "Heart Care",
-            //   description: "Comprehensive care for heart patients.",
-            // },
-            // {
-            //   icon: faStethoscope,
-            //   title: "Regular Check-ups",
-            //   description: "Routine check-ups to maintain optimal health.",
-            // },
-            // {
-            //   icon: faLungs,
-            //   title: "Pulmonary Care",
-            //   description: "Expert care for lung and respiratory conditions.",
-            // },
-            // {
-            //   icon: faNotesMedical,
-            //   title: "Medical Records",
-            //   description:
-            //     "Safe and secure management of your medical history.",
-            // },
           ].map(({ icon, title, description }, index) => (
             <div
               key={index}
@@ -174,12 +149,12 @@ const PatientCareAndAmenities = () => {
         <div className="">
           <div className="flex gap-6 mt-14 justify-center">
             <button
-              className="bg-black text-white rounded-full p-4 w-44 font-bold hover:shadow-md hover:shadow-black transition-all duration-300"
+              className="bg-black text-white border-2 border-white rounded-full p-4 w-44 font-bold hover:shadow-md hover:shadow-black transition-all duration-300"
               onClick={toggleModal}
             >
               Quick Tour
             </button>
-            <button className="bg-transparent border-2 border-black text-black hover:text-white hover:bg-black hover:shadow-md hover:shadow-black transition-all duration-300 rounded-full p-4 w-44 font-bold">
+            <button className="bg-transparent border-2 border-black dark:border-white text-black dark:text-white hover:dark:text-black hover:bg-white hover:shadow-md hover:shadow-black transition-all duration-300 rounded-full p-4 w-44 font-bold">
               Read More
             </button>
           </div>
@@ -191,7 +166,7 @@ const PatientCareAndAmenities = () => {
               onClick={toggleModal}
             >
               <div
-                className="relative bg-white rounded-lg w-[90%] md:w-[70%] lg:w-[50%] overflow-hidden shadow-lg transform scale-100 transition-transform duration-500 dark:bg-[#2d3748]"
+                className="relative bg-white rounded-lg w-[90%] sm:w-[70%] lg:w-[50%] overflow-hidden shadow-lg transform scale-100 transition-transform duration-500 dark:bg-[#2d3748]"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button

@@ -6,9 +6,9 @@ const Hero = () => {
     <div className="mt-3 pb-16 pt-24 relative bg-[url('/images/heroBackground.png')] bg-cover bg-center bg-no-repeat w-full h-full dark:bg-[url('/images/heroBackgroundDark.png')]">
       <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-md dark:bg-black/40"></div>
 
-      <div className="relative flex justify-center items-center h-full">
-        <div className="ml-10">
-          <h1 className="mb-5 relative font-bold text-2xl bg-transparent text-[#269dff] dark:text-[#269dff]">
+      <div className="relative flex justify-center items-center h-full px-4 sm:px-8 md:px-16">
+        <div className="ml-10 sm:ml-0 text-center sm:text-left">
+          <h1 className="mb-5 relative font-bold text-2xl sm:text-xl md:text-2xl lg:text-3xl text-[#269dff] dark:text-[#269dff]">
             {[
               "W",
               "E",
@@ -18,8 +18,10 @@ const Hero = () => {
               "M",
               "E",
               " ",
+              " ",
               "T",
               "O",
+              " ",
               " ",
               "A",
               "M",
@@ -34,10 +36,11 @@ const Hero = () => {
               </span>
             ))}{" "}
           </h1>
-          <h1 className="font-extrabold font-mono text-6xl text-[#ffffff] -tracking-wider leading-snug dark:text-[#ffffff]">
-            Best Healthcare Solution In Your <br /> City
+          <h1 className="font-extrabold font-mono text-4xl sm:text-3xl md:text-4xl lg:text-5xl text-[#ffffff] -tracking-wider leading-snug dark:text-[#ffffff]">
+            Best Healthcare Solution In Your <br className="hidden sm:block" />{" "}
+            City
           </h1>
-          <div className="flex gap-6 mt-10">
+          <div className="flex gap-6 mt-10 justify-center sm:justify-start flex-wrap">
             <button className="bg-white text-black rounded-full p-4 w-44 font-bold dark:bg-[#269dff] dark:text-white">
               Find Doctor
             </button>
@@ -46,12 +49,12 @@ const Hero = () => {
             </button>
           </div>
         </div>
-        <div className="mr-40">
+        <div className="mt-10 sm:mt-0 mr-40 sm:mr-0 w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl">
           <Image
             width={30000}
             height={30000}
             src="/images/heroImage.png"
-            className="rounded-md h-full w-full"
+            className="rounded-md w-full h-auto"
             alt="Building"
           />
         </div>
