@@ -6,13 +6,21 @@ import DatePicker from "react-datepicker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const AppointmentHero = () => {
   const [timeValue, setTimeValue] = useState("10:00");
   const [dateValue, setDateValue] = useState(new Date());
 
   return (
-    <div className="bg-[#269dff] py-16 px-6 sm:px-14 grid grid-cols-1 md:grid-cols-2 gap-10 dark:bg-[#2d3748]">
+    <div
+      className={`${encode_Sans.className} bg-[#269dff] py-16 px-6 sm:px-14 grid grid-cols-1 md:grid-cols-2 gap-10 dark:bg-[#2d3748]`}
+    >
       {/* Left Side Content */}
       <div className="flex flex-col justify-center">
         <h1 className="relative font-bold text-lg text-[#ffffff] dark:text-white after:block after:w-[131px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4fd1c5]">

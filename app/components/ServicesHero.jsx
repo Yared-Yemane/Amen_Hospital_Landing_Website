@@ -3,11 +3,21 @@ import serviceCards from "../data/serviceCards";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const ServicesHero = () => {
   return (
-    <div className="text-black dark:text-white flex-col justify-center px-5 py-10 mb-12">
-      <div className="flex flex-col items-center justify-center text-center mb-5">
+    <div
+      className={`${encode_Sans.className}text-black dark:text-white flex-col justify-center px-5 py-10 mb-12`}
+    >
+      <div
+        className={`${encode_Sans.className} flex flex-col items-center justify-center text-center mb-5`}
+      >
         <h1 className="relative font-bold text-lg text-[#269dff] dark:text-[#4fd1c5] after:block after:w-[90px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4fd1c5]">
           SERVICES
         </h1>
@@ -16,7 +26,9 @@ const ServicesHero = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        className={`${encode_Sans.className} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8`}
+      >
         {serviceCards.map((card, index) => (
           <div
             key={index}

@@ -18,6 +18,12 @@ import { LocateIcon, Mail } from "lucide-react";
 import footerMenu from "../data/footerMenu";
 import socialLinks from "../data/socialLinks";
 import { Lora } from "next/font/google";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const lora = Lora({
   subsets: ["latin"], // Optional: Specify subsets like 'latin', 'cyrillic'
@@ -27,7 +33,7 @@ const lora = Lora({
 
 const Footer = () => {
   return (
-    <div className={`${lora.className} bg-[#10124f] text-white`}>
+    <div className={`${encode_Sans.className} bg-[#10124f] text-white`}>
       <div className="py-20 px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-b">
         <div className="flex flex-col gap-6">
           <h1 className="relative font-bold text-2xl text-[#269dff] after:block after:w-[171px] after:h-1 after:bg-[#7597b3]">

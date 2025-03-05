@@ -1,10 +1,18 @@
 import Image from "next/image";
 import React from "react";
 import aboutCards from "../data/aboutCards";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const AboutHero = () => {
   return (
-    <div className="bg-white dark:bg-gray-900 grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 px-6 sm:px-16 pt-14">
+    <div
+      className={`${encode_Sans.className}bg-white dark:bg-gray-900 grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 px-6 sm:px-16 pt-14`}
+    >
       {/* Image Section */}
       <div className="w-full flex justify-center md:justify-start">
         <img
@@ -15,7 +23,9 @@ const AboutHero = () => {
       </div>
 
       {/* Text Section */}
-      <div className="w-full flex flex-col justify-center">
+      <div
+        className={`${encode_Sans.className} w-full flex flex-col justify-center`}
+      >
         <h1 className="relative font-bold text-lg text-[#269dff] dark:text-[#4fd1c5] after:block after:w-[94px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4fd1c5]">
           ABOUT US
         </h1>
@@ -24,7 +34,9 @@ const AboutHero = () => {
           Best Medical Care For Yourself and Your Family
         </h1>
 
-        <p className="text-gray-700 dark:text-gray-300 mb-6">
+        <p
+          className={`${encode_Sans.className}text-gray-700 dark:text-gray-300 mb-6`}
+        >
           Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor
           diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet
           diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed

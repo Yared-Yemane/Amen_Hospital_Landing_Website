@@ -14,6 +14,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import facilityImages from "../data/facilityImages";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const PatientCareAndAmenities = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +43,7 @@ const PatientCareAndAmenities = () => {
   };
 
   return (
-    <div className="mb-5 bg-[#269dff] py-16 px-4 sm:px-14 dark:bg-[#1a202c] dark:text-white">
+    <div className={`${encode_Sans.className} mb-5 bg-[#269dff] py-16 px-4 sm:px-14 dark:bg-[#1a202c] dark:text-white`}>
       <div className="w-full">
         <div className="flex flex-col justify-center items-center">
           <h1 className="relative font-bold text-lg text-[#ffffff] dark:text-[#e2e8f0] after:block after:w-[254px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4a5568]">

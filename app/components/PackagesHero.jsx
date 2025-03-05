@@ -1,9 +1,15 @@
 import React from "react";
 import MedicalPackagesSlider from "./SlidingCards";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const PackagesHero = () => {
   return (
-    <div className="py-7 dark:bg-[#2d3748]">
+    <div className={`${encode_Sans.className} py-7 dark:bg-[#2d3748]`}>
       <div className="flex flex-col items-center justify-center text-center mb-5">
         <h1 className="relative font-bold text-lg text-[#269dff] dark:text-[#4fd1c5] after:block after:w-[188px] after:h-1 after:bg-[#b8d4eb] dark:after:bg-[#4fd1c5]">
           MEDICAL PACKAGES

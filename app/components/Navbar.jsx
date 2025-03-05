@@ -8,6 +8,12 @@ import Link from "next/link";
 import Dropdown from "./DropdownMenu";
 import socialLinksFa from "../data/socialLinksFa";
 import { Lora } from "next/font/google";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const lora = Lora({
   subsets: ["latin"],
@@ -65,7 +71,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={lora.className}>
+    <div className={encode_Sans.className}>
       {/* First Section */}
       <div
         ref={firstSectionRef}
@@ -135,7 +141,7 @@ const Navbar = () => {
             width={150} // Updated size
             height={150} // Updated size
             alt="Company Logo"
-            className="h-full w-full sm:-ml-5 mb-4" // Ensures proper scaling
+            className="h-full w-full sm:-ml-5 rounded-lg" // Ensures proper scaling
           />
         </Link>
 

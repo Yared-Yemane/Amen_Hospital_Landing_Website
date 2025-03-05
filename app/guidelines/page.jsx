@@ -2,6 +2,12 @@ import React from "react";
 import Guidelines from "./components/Guidelines";
 import HealthAndSafetyGuidelines from "./components/HealthAndSafetyGuidelines";
 import { Lora } from "next/font/google";
+import { Encode_Sans } from "next/font/google";
+
+const encode_Sans = Encode_Sans({
+  subsets: ["latin"],
+  weight: ["400"], // Specify font weights
+});
 
 const lora = Lora({
   subsets: ["latin"], // Optional: Specify subsets like 'latin', 'cyrillic'
@@ -11,7 +17,7 @@ const lora = Lora({
 
 const page = () => {
   return (
-    <div className={`${lora.className} dark:bg-gray-800`}>
+    <div className={`${encode_Sans.className} dark:bg-gray-800`}>
       <Guidelines />
       <HealthAndSafetyGuidelines />
     </div>
